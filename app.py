@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 def main():
     client, db = DbMongo.getDB()
 
-    Dataprocess.delete_all(db)
+
+
 
 
     pipeline = Dataprocess(DATA)
@@ -16,8 +17,10 @@ def main():
     pipeline.create_courses(db)
 
     return True
-    
+
+    client.close()
 
 if __name__  == "__main__":
     load_dotenv()
     main()
+

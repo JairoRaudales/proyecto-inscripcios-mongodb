@@ -1,11 +1,9 @@
 from classes.DbMongo import DbMongo
+from classes.data import DATA
+from classes.Dataprocess import Dataprocess
 class Students:
 
-    def __init__(self, nombre_completo, edad, cursos_aprovados,cursos_reprobados):
-        self.nombre_completo = nombre_completo
-        self.edad = edad
-        self.cursos_aprovados = cursos_aprovados
-        self.cursos_reprobados = cursos_reprobados
+    def __init__(self,id = ""): 
         self.__collection = "Student"
 
     def save(self, db):
@@ -18,30 +16,24 @@ class Students:
         collection.delete_one(filterToUse)
 
         
-  #  @staticmethod
-   # def get_list(db):
-   #    collection = db["student"]
-   #    student = collection.find()
+    @staticmethod
+    def get_list(db):
+       collection = Dataprocess.create_students
+       students = collection.find()
         
-   #    list_estudiantes = []
-        #for e in student:
-         #   temp_students = Students(
-          #      e["nombre_completo"]
-           #     , e["edad"]
-            #    , e["cursos_aprovados"]
-             #   , e["cursos_reprobados"]
-              #  , e["_id"]
-            #)
+       list_estudiantes = []
+       for students in DATA:
+            temp_students = Students(
+            )
             
-            #list_estudiantes.append(temp_students)
-        #return list_estudiantes
+            list_estudiantes.append(temp_students)
+       return list_estudiantes
     
     
-  ###  @staticmethod
-   # def delete_all(db):
-  #      list_e = Students
+    @staticmethod
+    def delete_all(db):
+        list_e = Students
             
-        
         
     
   

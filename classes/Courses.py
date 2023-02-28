@@ -1,4 +1,6 @@
 from classes.DbMongo import DbMongo
+from classes.Dataprocess import Dataprocess
+from classes.data import DATA
 class Courses:
 
     def __init__(self,aprobados, reprobados):
@@ -7,7 +9,6 @@ class Courses:
         self.__collection = "Courses"
 
     def save(self, db):
-  
         collection = db[self.__collection]
         result = collection.insert_one(self.__dict__)
 
@@ -25,20 +26,13 @@ class Courses:
         
     @staticmethod
     def get_list(db):
-        collection = db["courses"]
-        courses = collection.find()
+       collection = Dataprocess.create_courses
+       courses = collection.find()
         
-        list_course = []
-        for s in courses:
-            temp_course = Courses(
-                s["aprobados"]
-                , s["reprobados"]
+       list_estudiantes = []
+       for courses in DATA:
+            temp_students = Courses(
             )
             
-            list_course.append(temp_course)
-        return list_course
-    
-    
-    @staticmethod
-    def delete_all(db):
-        list_e = Courses
+            list_estudiantes.append(temp_students)
+       return list_estudiantes

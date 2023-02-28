@@ -1,5 +1,6 @@
 from classes.DbMongo import DbMongo
 from classes.data import DATA
+from classes.Dataprocess import Dataprocess
 class Careers:
 
     def __init__(self, carrera_1, carrera_2):
@@ -18,24 +19,20 @@ class Careers:
         objstore = {'$set':self.__dict__}
         collection.update_one(filterToUse, objstore)
         
-    def delete(self, db):
-        collection = db[self.__collection]
-        filterToUse = { '_id' : self.__id }
-        collection.delete_one(filterToUse)
-        
     @staticmethod
     def get_list(db):
-        collection = db["career"]
-        Career = collection.find()
+       collection = Dataprocess.create_careers
+       careers = collection.find()
         
-        list_careers = []
-        for e in DATA:
-            temp_career = Careers(
-                e["carrera"]
+       list_estudiantes = []
+       for careers in DATA:
+            temp_students = Careers(
+                collection.insert_one("Carrera:")
             )
             
-            list_careers.append(temp_career)
-        return list_careers
+            list_estudiantes.append(temp_students)
+       return list_estudiantes
+    
     
     @staticmethod
     def delete_all(db):
