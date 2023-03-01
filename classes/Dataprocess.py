@@ -9,31 +9,35 @@ class Dataprocess:
     def create_careers(self,db):
         self.__collection = "Careers"
         collection = db.create_collection("Careers")
-        result = collection.insert_one(self.__dict__)
-        Careers = collection
 
-        DATA = Careers["carrera"]
-
-
-
+        for diccionario in DATA:
+            careers = {"carrera": diccionario["carrera"]}
+            collection.insert_one(careers)
 
         return True
     
     def create_courses(self, db):
         self.__collection = "Courses"
         collection = db.create_collection("Courses")
-        result = collection.insert_one(self.__dict__)
 
- 
+        for diccionario in DATA:
+            courses = {"curso aprobados": diccionario["cursos_aprobados"]
+                       , "cursos reprobados": diccionario["cursos_reprobados"]}
+            collection.insert_one(courses)
+
         return True
     
     def create_students(self, db):
         self.__collection = "Students"
         collection = db.create_collection("Students")
-        result = collection.insert_one(self.__dict__)
-
- 
-
+        for diccionario in DATA:
+            courses = {"numero de cuenta": diccionario["numero_cuenta"]
+                       , "nombre completo": diccionario["nombre_completo"]
+                       , "cursos aprobados": diccionario["cursos_aprobados"]
+                       , "cursos reprobados": diccionario["cursos_reprobados"]
+                       , "edad": diccionario["edad"]
+                       , "carrera": diccionario["carrera"]}
+            collection.insert_one(courses)        
 
         return True
 

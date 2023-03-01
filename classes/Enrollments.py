@@ -22,23 +22,6 @@ class Enrollments:
         collection = db[self.__collection]
         filterToUse = { '_id' : self.__id }
         collection.delete_one(filterToUse)
-        
-    @staticmethod
-    def get_list(db):
-        collection = db["enrollments"]
-        enrollments = collection.find()
-        
-        list_enrollments = []
-        for d in enrollments:
-            temp_enrollments = Enrollments(
-                d["nombre"]
-                , d["carrera"]
-                , d["curso"]
-            )
-            
-            list_enrollments.append(temp_enrollments)
-        return list_enrollments
-    
     
     @staticmethod
     def delete_all(db):
